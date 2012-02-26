@@ -8,8 +8,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'windowshopper.views.home', name='home'),
-    # url(r'^windowshopper/', include('windowshopper.foo.urls')),
+    # url(r'^$', 'windowshop.views.home', name='home'),
+    # url(r'^windowshop/', include('windowshop.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

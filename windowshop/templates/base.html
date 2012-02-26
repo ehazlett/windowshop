@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>WindowShopper</title>
+    <title>WindowShop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -15,6 +15,7 @@
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   </head>
   <body>
     <div class="navbar navbar-fixed-top">
@@ -25,7 +26,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">WindowShopper</a>
+          <a class="brand" href="#">WindowShop</a>
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="#">{% trans 'home' %}</a></li>
@@ -37,12 +38,16 @@
       </div>
     </div>
     {% block base_content %}
-    <div class="container">
+    <div class="container content">
       {% block content %}
       {% endblock %}
     </div> <!-- /container -->
     {% endblock %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <div class="footer">
+      <a href="https://github.com/ehazlett/windowshop" target="_gh">:: Fork on Github ::</a>
+    </div>
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap-modal.js"></script>
   </body>
 </html>

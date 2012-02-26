@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="row-fluid">
+  <div class="well span9 product">
+    {% if product %}
+
+    {% else %}
+    <div class="info">{% trans 'There are no products.' %}</div>
+    {% endif %}
+  </div>
+  <div class="sidebar span2">
+    <h2>{% trans 'Stream' %}</h2>
+    {% for p in latest_products %}
+    
+    {% empty %}
+    <a href="#" id="btn-add-item" class="btn btn-large">{% trans 'Add Item' %}</a>
+    {% endfor %}
+  </div>
+
+  <div id="modal-add-item" class="modal hide">
+    <div class="modal-header">
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $("#btn-add-item").click(function(){
+    $("#modal-add-item").modal('toggle');
+  });
+</script>
+{% endblock %}
