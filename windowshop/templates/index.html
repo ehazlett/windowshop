@@ -5,32 +5,82 @@
 <div class="row-fluid">
   <div class="well span9 product">
     {% if product %}
-
+    <div class="span3">
+      <img src="{{product.image_url}}"/>
+    </div>
+    <div class="span5 pull-right">
+      <h2>{{product.name}}</h2>
+      <div class="info-small">{{product.description}}</div>
+      <div class="product-link">
+        <a href="{{product.url}}" class="btn" target="_ws">{% trans 'View Product' %}</a>
+      </div>
+    </div>
     {% else %}
     <div class="info">{% trans 'There are no products.' %}</div>
     {% endif %}
   </div>
   <div class="sidebar span2">
-    <h2>{% trans 'Stream' %}</h2>
-    {% for p in latest_products %}
-    
-    {% empty %}
-    <a href="#" id="btn-add-item" class="btn btn-large">{% trans 'Add Item' %}</a>
+    <h2>{% trans 'Stream' %} <a href="#" id="btn-add-item" title="{% trans 'Add Item' %}"><i class="icon-plus-sign icon-link"></i></a></h2>
+    <dl>
+    {% for p in latest %}
+      <dt><a href="{% url products.views.index p.uuid %}">{{p.name}}</a></dt>
+      <dd>{{p.description|truncatewords:10}}</dt>
     {% endfor %}
+    </dl>
+    <div class="sidebar-footer">
+    </div>
   </div>
 
   <div id="modal-add-item" class="modal hide">
     <div class="modal-header">
+      <a class="close" data-dismiss="modal">×</a>
+      <h1>{% trans 'Add Item' %}</h1>
     </div>
     <div class="modal-body">
+      <form id="form-add-item" class="form-horizontal" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="control-group">
+          <label class="control-label">{% trans 'Name' %}</label>
+          <div class="controls">
+            <input type="text" class="input-xlarge" name="name"/>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">{% trans 'Description' %}</label>
+          <div class="controls">
+            <textarea name="description"></textarea>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">{% trans 'Image URL' %}</label>
+          <div class="controls">
+            <input type="text" class="input-xlarge" name="image_url"/>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">{% trans 'URL' %}</label>
+          <div class="controls">
+            <input type="text" class="input-xlarge" name="url"/>
+          </div>
+        </div>
+      </form>
     </div>
     <div class="modal-footer">
+      <a id="btn-form-save" class="btn btn-primary">{% trans 'Save' %}</a>
+      <a class="btn" data-dismiss="modal">{% trans 'Cancel' %}</a>
     </div>
   </div>
 </div>
 <script type="text/javascript">
   $("#btn-add-item").click(function(){
     $("#modal-add-item").modal('toggle');
+  });
+  $("#btn-form-save").click(function(){
+    if (validateForm("form-add-item")) {
+      $("#form-add-item").submit();
+    } else {
+      return false;
+    }
   });
 </script>
 {% endblock %}

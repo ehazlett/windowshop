@@ -21,11 +21,30 @@ div.sidebar {
   border-left: 1px solid #e5e5e5;
   min-height: 200px;
 }
+div.sidebar dl {
+  margin-left: 5px;
+}
 .info {
   font-size: 24px;
   color: #c1c1c1;
 }
+.info-small {
+  font-size: 16px;
+  color: #a1a1a1;
+}
 div.footer {
   margin: 15px auto 0 auto;
+  text-align: center;
+}
+div.product-link {
+  margin: 10px 0 10px 0;
+}
+.icon-link { 
+  position: relative;
+  top: 6px;
+}
+div.sidebar-footer {
+  position: relative;
+  bottom: -5px;
   text-align: center;
 }

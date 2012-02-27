@@ -26,12 +26,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">WindowShop</a>
+          <a class="brand" href="{% url products.views.index %}">WindowShop</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">{% trans 'home' %}</a></li>
-              <li><a href="#about">{% trans 'about' %}</a></li>
-              <li><a href="#contact">{% trans 'contact' %}</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -47,6 +44,7 @@
     <div class="footer">
       <a href="https://github.com/ehazlett/windowshop" target="_gh">:: Fork on Github ::</a>
     </div>
+    <script src="{{ STATIC_URL }}js/validate.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap-modal.js"></script>
   </body>
